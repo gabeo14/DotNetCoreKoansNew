@@ -228,7 +228,7 @@ broken line";
             strBuilder.Append("lazy ");
             strBuilder.Append("dog.");
             var str = strBuilder.ToString();
-            Assert.Equal(FILL_ME_IN, str);
+            Assert.Equal("The quick brown fox jumped over the lazy dog.", str);
 
             //String.Format and StringBuilder will be more efficient than concatenation. Prefer them.
         }
@@ -241,43 +241,43 @@ broken line";
             strBuilder.AppendFormat("{0} {1} {2}", "jumped", "over", "the");
             strBuilder.AppendFormat("{0} {1}.", "lazy", "dog");
             var str = strBuilder.ToString();
-            Assert.Equal(FILL_ME_IN, str);
+            Assert.Equal("The quick brownjumped over thelazy dog.", str);
         }
 
         [Step(24)]
         public void LiteralStringsInterpretsEscapeCharacters()
         {
             var str = "\n";
-            Assert.Equal(FILL_ME_IN, str.Length);
+            Assert.Equal(1, str.Length);
         }
 
         [Step(25)]
         public void VerbatimStringsDoNotInterpretEscapeCharacters()
         {
             var str = @"\n";
-            Assert.Equal(FILL_ME_IN, str.Length);
+            Assert.Equal(2, str.Length);
         }
 
         [Step(26)]
         public void VerbatimStringsStillDoNotInterpretEscapeCharacters()
         {
             var str = @"\\\";
-            Assert.Equal(FILL_ME_IN, str.Length);
+            Assert.Equal(3, str.Length);
         }
 
         [Step(27)]
         public void YouCanGetASubstringFromAString()
         {
             var str = "Bacon, lettuce and tomato";
-            Assert.Equal(FILL_ME_IN, str.Substring(19));
-            Assert.Equal(FILL_ME_IN, str.Substring(7, 3));
+            Assert.Equal("tomato", str.Substring(19));
+            Assert.Equal("let", str.Substring(7, 3));
         }
 
         [Step(28)]
         public void YouCanGetASingleCharacterFromAString()
         {
             var str = "Bacon, lettuce and tomato";
-            Assert.Equal(FILL_ME_IN, str[0]);
+            Assert.Equal('B', str[0]);
         }
 
         [Step(29)]
@@ -285,7 +285,7 @@ broken line";
         {
             Assert.Equal(97, 'a');
             Assert.Equal(98, 'b');
-            Assert.Equal(FILL_ME_IN, 'b' == ('a' + 1));
+            Assert.Equal(98 == (97 + 1), 'b' == ('a' + 1));
         }
 
         [Step(30)]
@@ -293,7 +293,7 @@ broken line";
         {
             var str = "Sausage Egg Cheese";
             string[] words = str.Split();
-            Assert.Equal(new[] { FILL_ME_IN }, words);
+            Assert.Equal(new[] { "Sausage", "Egg", "Cheese" }, words);
         }
 
         [Step(31)]
@@ -301,7 +301,7 @@ broken line";
         {
             var str = "the:rain:in:spain";
             string[] words = str.Split(':');
-            Assert.Equal(new[] { FILL_ME_IN }, words);
+            Assert.Equal(new[] { "the", "rain", "in", "spain" }, words);
         }
 
         [Step(32)]
@@ -310,7 +310,7 @@ broken line";
             var str = "the:rain:in:spain";
             var regex = new System.Text.RegularExpressions.Regex(":");
             string[] words = regex.Split(str);
-            Assert.Equal(new[] { FILL_ME_IN }, words);
+            Assert.Equal(new[] { "the", "rain", "in", "spain" }, words);
 
             //A full treatment of regular expressions is beyond the scope
             //of this tutorial. The book "Mastering Regular Expressions"
@@ -323,7 +323,7 @@ broken line";
             var name = "John Doe";
             var age = 33;
             var str = $"Mr. {name} is {age} years old";
-            Assert.Equal(FILL_ME_IN, str);
+            Assert.Equal("Mr. John Doe is 33 years old", str);
         }
     }
 }
