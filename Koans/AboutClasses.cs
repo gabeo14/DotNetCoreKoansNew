@@ -25,7 +25,7 @@ namespace DotNetCoreKoans.Koans
             // A type that is defined as a class is a reference type.
             // when you declare a variable of a reference type, the variable
             // contains the value null until you explicitly create an instance
-            object foo = null;
+            object foo = new Foo1();
             Assert.NotNull(foo);
         }
 
@@ -42,6 +42,8 @@ namespace DotNetCoreKoans.Koans
         {
             // Try to assign visible class members
             var foo = new Foo2();
+            foo.Int = 1;
+            foo._str = "Bar";
             Assert.Equal(1, foo.Int);
             Assert.Equal("Bar", foo._str);
         }
